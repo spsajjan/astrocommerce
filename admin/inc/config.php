@@ -3,7 +3,7 @@
 ini_set('error_reporting', E_ALL);
 
 // Setting up the time zone
-date_default_timezone_set('America/Los_Angeles');
+date_default_timezone_set('Asia/Kolkata');
 
 // Host Name
 $dbhost = 'localhost';
