@@ -82,7 +82,7 @@ if (isset($_POST['form1'])) {
                                     <label for=""><?php echo LANG_VALUE_101; ?> *</label>
                                     <input type="password" class="form-control" name="cust_re_password">
                                 </div>
-                                <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_5; ?>" name="form1">
+                                <input type="submit" class="btn btn-primary" value="Update" name="form1">
                             </div>
                         </div>
                         

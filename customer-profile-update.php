@@ -158,7 +158,7 @@ if (isset($_POST['form1'])) {
                                 <input type="text" class="form-control" name="cust_zip" value="<?php echo $_SESSION['customer']['cust_zip']; ?>">
                             </div>
                         </div>
-                        <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_5; ?>" name="form1">
+                        <input type="submit" class="btn btn-primary" value="Update" name="form1">
                     </form>
                 </div>                
             </div>

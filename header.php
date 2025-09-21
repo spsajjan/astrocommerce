@@ -5,6 +5,9 @@ session_start();
 include("admin/inc/config.php");
 include("admin/inc/functions.php");
 include("admin/inc/CSRF_Protect.php");
+
+require_once('functions/funcs.php');
+
 $csrf = new CSRF_Protect();
 $error_message = '';
 $success_message = '';
@@ -275,7 +278,6 @@ foreach ($result as $row) {
 	</div>
 </div>
 
-
 <div class="header">
 	<div class="container">
 		<div class="row inner">
@@ -285,22 +287,21 @@ foreach ($result as $row) {
 			
 			<div class="col-md-5 right">
 				<ul>
-					
 					<?php
 					if(isset($_SESSION['customer'])) {
 						?>
-						<li><i class="fa fa-user"></i> <?php echo LANG_VALUE_13; ?> <?php echo $_SESSION['customer']['cust_name']; ?></li>
-						<li><a href="dashboard.php"><i class="fa fa-home"></i> <?php echo LANG_VALUE_89; ?></a></li>
+						<li><i class="fa fa-user"></i> Logged in as <?php echo $_SESSION['customer']['cust_name']; ?></li>
+						<li><a href="dashboard.php"><i class="fa fa-home"></i> Dashboard</a></li>
 						<?php
 					} else {
 						?>
-						<li><a href="login.php"><i class="fa fa-sign-in"></i> <?php echo LANG_VALUE_9; ?></a></li>
-						<li><a href="registration.php"><i class="fa fa-user-plus"></i> <?php echo LANG_VALUE_15; ?></a></li>
+						<li><a href="login.php"><i class="fa fa-sign-in"></i> Login</a></li>
+						<li><a href="registration.php"><i class="fa fa-user-plus"></i> Register</a></li>
 						<?php	
 					}
 					?>
 
-					<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_18; ?> (<?php echo LANG_VALUE_1; ?><?php
+					<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart (Rs.<?php
 					if(isset($_SESSION['cart_p_id'])) {
 						$table_total_price = 0;
 						$i=0;
@@ -329,9 +330,9 @@ foreach ($result as $row) {
 				<form class="navbar-form navbar-left" role="search" action="search-result.php" method="get">
 					<?php $csrf->echoInputField(); ?>
 					<div class="form-group">
-						<input type="text" class="form-control search-top" placeholder="<?php echo LANG_VALUE_2; ?>" name="search_text">
+						<input type="text" class="form-control search-top" placeholder="Search Product" name="search_text">
 					</div>
-					<button type="submit" class="btn btn-danger"><?php echo LANG_VALUE_3; ?></button>
+					<button type="submit" class="btn btn-danger">Search</button>
 				</form>
 			</div>
 		</div>

@@ -1,76 +1,63 @@
 <?php require_once('header.php'); ?>
-
 <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
-foreach ($result as $row) {
-    $banner_cart = $row['banner_cart'];
-}
-?>
+// Fetch cart banner
+$banner_cart = $pdo->query("SELECT banner_cart FROM tbl_settings WHERE id = 1")
+                   ->fetchColumn();
 
-<?php
+// Initialize error message
 $error_message = '';
-if(isset($_POST['form1'])) {
 
-    $i = 0;
-    $statement = $pdo->prepare("SELECT * FROM tbl_product");
-    $statement->execute();
-    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($result as $row) {
-        $i++;
-        $table_product_id[$i] = $row['p_id'];
-        $table_quantity[$i] = $row['p_qty'];
+if (isset($_POST['form1'])) {
+
+    // Fetch all product quantities in one query
+    $products = $pdo->query("SELECT p_id, p_qty, p_name FROM tbl_product")
+                    ->fetchAll(PDO::FETCH_ASSOC);
+
+    // Build a lookup array: [p_id => [qty, name]]
+    $product_lookup = [];
+    foreach ($products as $prod) {
+        $product_lookup[$prod['p_id']] = [
+            'qty'  => $prod['p_qty'],
+            'name' => $prod['p_name']
+        ];
     }
 
-    $i=0;
-    foreach($_POST['product_id'] as $val) {
-        $i++;
-        $arr1[$i] = $val;
-    }
-    $i=0;
-    foreach($_POST['quantity'] as $val) {
-        $i++;
-        $arr2[$i] = $val;
-    }
-    $i=0;
-    foreach($_POST['product_name'] as $val) {
-        $i++;
-        $arr3[$i] = $val;
-    }
-    
-    $allow_update = 1;
-    for($i=1;$i<=count($arr1);$i++) {
-        for($j=1;$j<=count($table_product_id);$j++) {
-            if($arr1[$i] == $table_product_id[$j]) {
-                $temp_index = $j;
-                break;
-            }
+    $allow_update = true;
+
+    // Loop through posted cart items
+    foreach ($_POST['product_id'] as $index => $p_id) {
+        $requested_qty = (int)$_POST['quantity'][$index];
+        $product_name  = $_POST['product_name'][$index];
+
+        if (!isset($product_lookup[$p_id])) {
+            // Product not found
+            $allow_update = false;
+            $error_message .= "\"$product_name\" does not exist.\n";
+            continue;
         }
-        if($table_quantity[$temp_index] < $arr2[$i]) {
-        	$allow_update = 0;
-            $error_message .= '"'.$arr2[$i].'" items are not available for "'.$arr3[$i].'"\n';
+
+        $available_qty = $product_lookup[$p_id]['qty'];
+        if ($requested_qty > $available_qty) {
+            $allow_update = false;
+            $error_message .= "\"$requested_qty\" items are not available for \"$product_name\"\n";
         } else {
-            $_SESSION['cart_p_qty'][$i] = $arr2[$i];
+            // Update session cart quantity
+            $_SESSION['cart_p_qty'][$index] = $requested_qty;
         }
     }
-    $error_message .= '\nOther items quantity are updated successfully!';
-    ?>
-    
-    <?php if($allow_update == 0): ?>
-    	<script>alert('<?php echo $error_message; ?>');</script>
-	<?php else: ?>
-		<script>alert('All Items Quantity Update is Successful!');</script>
-	<?php endif; ?>
-    <?php
 
+    if ($allow_update) {
+        echo "<script>alert('All items quantity updated successfully!');</script>";
+    } else {
+        echo "<script>alert('$error_message');</script>";
+    }
 }
 ?>
 
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_cart; ?>)">
     <div class="overlay"></div>
     <div class="page-banner-inner">
-        <h1><?php echo LANG_VALUE_18; ?></h1>
+        <h1>Cart</h1>
     </div>
 </div>
 
@@ -89,11 +76,11 @@ if(isset($_POST['form1'])) {
                     <table class="table table-responsive table-hover table-bordered">
                         <tr>
                             <th><?php echo '#' ?></th>
-                            <th><?php echo LANG_VALUE_8; ?></th>
-                            <th><?php echo LANG_VALUE_47; ?></th>
-                            <th><?php echo LANG_VALUE_157; ?></th>
-                            <th><?php echo LANG_VALUE_158; ?></th>
-                            <th><?php echo LANG_VALUE_159; ?></th>
+                            <th>Photo</th>
+                            <th>Product Name</th>
+                            <th>Size</th>
+                            <th>Color</th>
+                            <th>Price</th>
                             <th><?php echo LANG_VALUE_55; ?></th>
                             <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
                             <th class="text-center" style="width: 100px;"><?php echo LANG_VALUE_83; ?></th>
@@ -173,7 +160,7 @@ if(isset($_POST['form1'])) {
                             <td><?php echo $arr_cart_p_name[$i]; ?></td>
                             <td><?php echo $arr_cart_size_name[$i]; ?></td>
                             <td><?php echo $arr_cart_color_name[$i]; ?></td>
-                            <td><?php echo LANG_VALUE_1; ?><?php echo $arr_cart_p_current_price[$i]; ?></td>
+                            <td>Rs.<?php echo $arr_cart_p_current_price[$i]; ?></td>
                             <td>
                                 <input type="hidden" name="product_id[]" value="<?php echo $arr_cart_p_id[$i]; ?>">
                                 <input type="hidden" name="product_name[]" value="<?php echo $arr_cart_p_name[$i]; ?>">
@@ -184,7 +171,7 @@ if(isset($_POST['form1'])) {
                                 $row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
                                 $table_total_price = $table_total_price + $row_total_price;
                                 ?>
-                                <?php echo LANG_VALUE_1; ?><?php echo $row_total_price; ?>
+                                Rs.<?php echo $row_total_price; ?>
                             </td>
                             <td class="text-center">
                                 <a onclick="return confirmDelete();" href="cart-item-delete.php?id=<?php echo $arr_cart_p_id[$i]; ?>&size=<?php echo $arr_cart_size_id[$i]; ?>&color=<?php echo $arr_cart_color_id[$i]; ?>" class="trash"><i class="fa fa-trash" style="color:red;"></i></a>
@@ -193,7 +180,7 @@ if(isset($_POST['form1'])) {
                         <?php endfor; ?>
                         <tr>
                             <th colspan="7" class="total-text">Total</th>
-                            <th class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $table_total_price; ?></th>
+                            <th class="total-amount">Rs.<?php echo $table_total_price; ?></th>
                             <th></th>
                         </tr>
                     </table> 
@@ -201,16 +188,13 @@ if(isset($_POST['form1'])) {
 
                 <div class="cart-buttons">
                     <ul>
-                        <li><input type="submit" value="<?php echo LANG_VALUE_20; ?>" class="btn btn-primary" name="form1"></li>
+                        <li><input type="submit" value="Update Cart" class="btn btn-primary" name="form1"></li>
                         <li><a href="index.php" class="btn btn-primary"><?php echo LANG_VALUE_85; ?></a></li>
-                        <li><a href="checkout.php" class="btn btn-primary"><?php echo LANG_VALUE_23; ?></a></li>
+                        <li><a href="checkout.php" class="btn btn-primary">Proceed to Checkout</a></li>
                     </ul>
                 </div>
                 </form>
                 <?php endif; ?>
-
-                
-
 			</div>
 		</div>
 	</div>

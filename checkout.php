@@ -19,7 +19,7 @@ if(!isset($_SESSION['cart_p_id'])) {
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_checkout; ?>)">
     <div class="overlay"></div>
     <div class="page-banner-inner">
-        <h1><?php echo LANG_VALUE_22; ?></h1>
+        <h1>Checkout</h1>
     </div>
 </div>
 
@@ -34,16 +34,16 @@ if(!isset($_SESSION['cart_p_id'])) {
                     </p>
                 <?php else: ?>
 
-                <h3 class="special"><?php echo LANG_VALUE_26; ?></h3>
+                <h3 class="special">Order Details</h3>
                 <div class="cart">
                     <table class="table table-responsive table-hover table-bordered">
                         <tr>
                             <th><?php echo '#' ?></th>
-                            <th><?php echo LANG_VALUE_8; ?></th>
-                            <th><?php echo LANG_VALUE_47; ?></th>
-                            <th><?php echo LANG_VALUE_157; ?></th>
-                            <th><?php echo LANG_VALUE_158; ?></th>
-                            <th><?php echo LANG_VALUE_159; ?></th>
+                            <th>Photo</th>
+                            <th>Product Name</th>
+                            <th>Size</th>
+                            <th>Color</th>
+                            <th>Price</th>
                             <th><?php echo LANG_VALUE_55; ?></th>
                             <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
                         </tr>
@@ -122,20 +122,20 @@ if(!isset($_SESSION['cart_p_id'])) {
                             <td><?php echo $arr_cart_p_name[$i]; ?></td>
                             <td><?php echo $arr_cart_size_name[$i]; ?></td>
                             <td><?php echo $arr_cart_color_name[$i]; ?></td>
-                            <td><?php echo LANG_VALUE_1; ?><?php echo $arr_cart_p_current_price[$i]; ?></td>
+                            <td>Rs.<?php echo $arr_cart_p_current_price[$i]; ?></td>
                             <td><?php echo $arr_cart_p_qty[$i]; ?></td>
                             <td class="text-right">
                                 <?php
                                 $row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
                                 $table_total_price = $table_total_price + $row_total_price;
                                 ?>
-                                <?php echo LANG_VALUE_1; ?><?php echo $row_total_price; ?>
+                                Rs.<?php echo $row_total_price; ?>
                             </td>
                         </tr>
                         <?php endfor; ?>           
                         <tr>
                             <th colspan="7" class="total-text"><?php echo LANG_VALUE_81; ?></th>
-                            <th class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $table_total_price; ?></th>
+                            <th class="total-amount">Rs.<?php echo $table_total_price; ?></th>
                         </tr>
                         <?php
                         $statement = $pdo->prepare("SELECT * FROM tbl_shipping_cost WHERE country_id=?");
@@ -157,7 +157,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                         ?>
                         <tr>
                             <td colspan="7" class="total-text"><?php echo LANG_VALUE_84; ?></td>
-                            <td class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $shipping_cost; ?></td>
+                            <td class="total-amount">Rs.<?php echo $shipping_cost; ?></td>
                         </tr>
                         <tr>
                             <th colspan="7" class="total-text"><?php echo LANG_VALUE_82; ?></th>
@@ -165,7 +165,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 <?php
                                 $final_total = $table_total_price+$shipping_cost;
                                 ?>
-                                <?php echo LANG_VALUE_1; ?><?php echo $final_total; ?>
+                                Rs.<?php echo $final_total; ?>
                             </th>
                         </tr>
                     </table> 
@@ -278,12 +278,12 @@ if(!isset($_SESSION['cart_p_id'])) {
 
                 <div class="cart-buttons">
                     <ul>
-                        <li><a href="cart.php" class="btn btn-primary"><?php echo LANG_VALUE_21; ?></a></li>
+                        <li><a href="cart.php" class="btn btn-primary">Back to Cart</a></li>
                     </ul>
                 </div>
 
 				<div class="clear"></div>
-                <h3 class="special"><?php echo LANG_VALUE_33; ?></h3>
+                <h3 class="special">Payment Section</h3>
                 <div class="row">
                     
                     	<?php
@@ -321,11 +321,11 @@ if(!isset($_SESSION['cart_p_id'])) {
 	                            <div class="row">
 
 	                                <div class="col-md-12 form-group">
-	                                    <label for=""><?php echo LANG_VALUE_34; ?> *</label>
+	                                    <label for="">Select Payment Method *</label>
 	                                    <select name="payment_method" class="form-control select2" id="advFieldsStatus">
-	                                        <option value=""><?php echo LANG_VALUE_35; ?></option>
-	                                        <option value="PayPal"><?php echo LANG_VALUE_36; ?></option>
-	                                        <option value="Bank Deposit"><?php echo LANG_VALUE_38; ?></option>
+	                                        <option value="">Select a Method</option>
+	                                        <option value="PayPal">Paypal</option>
+	                                        <option value="Bank Deposit">Bank Deposit</option>
 	                                    </select>
 	                                </div>
 
