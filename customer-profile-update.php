@@ -96,7 +96,7 @@ if (isset($_POST['form1'])) {
             <div class="col-md-12">
                 <div class="user-content">
                     <h3>
-                        <?php echo LANG_VALUE_117; ?>
+                        Update Profile
                     </h3>
                     <?php
                     if($error_message != '') {
@@ -110,27 +110,27 @@ if (isset($_POST['form1'])) {
                         <?php $csrf->echoInputField(); ?>
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_102; ?> *</label>
+                                <label for="">Full Name *</label>
                                 <input type="text" class="form-control" name="cust_name" value="<?php echo $_SESSION['customer']['cust_name']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_103; ?></label>
+                                <label for="">Company Name</label>
                                 <input type="text" class="form-control" name="cust_cname" value="<?php echo $_SESSION['customer']['cust_cname']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_94; ?> *</label>
+                                <label for="">Email Address *</label>
                                 <input type="text" class="form-control" name="" value="<?php echo $_SESSION['customer']['cust_email']; ?>" disabled>
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_104; ?> *</label>
+                                <label for="">Phone Number *</label>
                                 <input type="text" class="form-control" name="cust_phone" value="<?php echo $_SESSION['customer']['cust_phone']; ?>">
                             </div>
                             <div class="col-md-12 form-group">
-                                <label for=""><?php echo LANG_VALUE_105; ?> *</label>
+                                <label for="">Address *</label>
                                 <textarea name="cust_address" class="form-control" cols="30" rows="10" style="height:70px;"><?php echo $_SESSION['customer']['cust_address']; ?></textarea>
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_106; ?> *</label>
+                                <label for="">Country *</label>
                                 <select name="cust_country" class="form-control">
                                 <?php
                                 $statement = $pdo->prepare("SELECT * FROM tbl_country ORDER BY country_name ASC");
@@ -146,15 +146,15 @@ if (isset($_POST['form1'])) {
                             </div>
                             
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_107; ?> *</label>
+                                <label for="">City *</label>
                                 <input type="text" class="form-control" name="cust_city" value="<?php echo $_SESSION['customer']['cust_city']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_108; ?> *</label>
+                                <label for="">State *</label>
                                 <input type="text" class="form-control" name="cust_state" value="<?php echo $_SESSION['customer']['cust_state']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_109; ?> *</label>
+                                <label for="">Zip Code *</label>
                                 <input type="text" class="form-control" name="cust_zip" value="<?php echo $_SESSION['customer']['cust_zip']; ?>">
                             </div>
                         </div>

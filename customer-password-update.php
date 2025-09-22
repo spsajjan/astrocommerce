@@ -59,7 +59,7 @@ if (isset($_POST['form1'])) {
             <div class="col-md-12">
                 <div class="user-content">
                     <h3 class="text-center">
-                        <?php echo LANG_VALUE_99; ?>
+                        Update Password
                     </h3>
                     <form action="" method="post">
                         <?php $csrf->echoInputField(); ?>
@@ -75,11 +75,11 @@ if (isset($_POST['form1'])) {
                                 }
                                 ?>
                                 <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_100; ?> *</label>
+                                    <label for="">New Password *</label>
                                     <input type="password" class="form-control" name="cust_password">
                                 </div>
                                 <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_101; ?> *</label>
+                                    <label for="">Retype New Password *</label>
                                     <input type="password" class="form-control" name="cust_re_password">
                                 </div>
                                 <input type="submit" class="btn btn-primary" value="Update" name="form1">

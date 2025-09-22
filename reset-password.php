@@ -68,7 +68,7 @@ if(isset($_POST['form1'])) {
 
 <div class="page-banner" style="background-color:#444;background-image: url(assets/uploads/<?php echo $banner_reset_password; ?>);">
     <div class="inner">
-        <h1><?php echo LANG_VALUE_149; ?></h1>
+        <h1>Change Password</h1>
     </div>
 </div>
 
@@ -91,16 +91,16 @@ if(isset($_POST['form1'])) {
                                 <div class="col-md-4"></div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for=""><?php echo LANG_VALUE_100; ?> *</label>
+                                        <label for="">New Password *</label>
                                         <input type="password" class="form-control" name="cust_new_password">
                                     </div>
                                     <div class="form-group">
-                                        <label for=""><?php echo LANG_VALUE_101; ?> *</label>
+                                        <label for="">Retype New Password *</label>
                                         <input type="password" class="form-control" name="cust_re_password">
                                     </div>
                                     <div class="form-group">
                                         <label for=""></label>
-                                        <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_149; ?>" name="form1">
+                                        <input type="submit" class="btn btn-primary" value="Change Password" name="form1">
                                     </div>
                                 </div>
                             </div>                        

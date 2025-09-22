@@ -75,18 +75,18 @@ if(isset($_POST['form1'])) {
                                 }
                                 ?>
                                 <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_94; ?> *</label>
+                                    <label for="">Email Address *</label>
                                     <input type="email" class="form-control" name="cust_email">
                                 </div>
                                 <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_96; ?> *</label>
+                                    <label for="">Password *</label>
                                     <input type="password" class="form-control" name="cust_password">
                                 </div>
                                 <div class="form-group">
                                     <label for=""></label>
                                     <input type="submit" class="btn btn-success" value="Submit" name="form1">
                                 </div>
-                                <a href="forget-password.php" style="color:#e4144d;"><?php echo LANG_VALUE_97; ?>?</a>
+                                <a href="forget-password.php" style="color:#e4144d;">Forgot Password?</a>
                             </div>
                         </div>                        
                     </form>

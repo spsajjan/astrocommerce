@@ -472,7 +472,7 @@ if($success_message1 != '') {
 								<input type="number" class="input-text qty" step="1" min="1" max="" name="p_qty" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric">
 							</div>
 							<div class="btn-cart btn-cart1">
-                                <input type="submit" value="<?php echo LANG_VALUE_154; ?>" name="form_add_to_cart">
+                                <input type="submit" value="Add to Cart" name="form_add_to_cart">
 							</div>
                             </form>
 							<div class="share">
@@ -566,11 +566,11 @@ if($success_message1 != '') {
                                                         <td><?php echo $row['cust_name']; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo LANG_VALUE_76; ?></th>
+                                                        <th>Comment</th>
                                                         <td><?php echo $row['comment']; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th><?php echo LANG_VALUE_78; ?></th>
+                                                        <th>Rating</th>
                                                         <td>
                                                             <div class="rating">
                                                                 <?php
@@ -657,8 +657,8 @@ if($success_message1 != '') {
         <div class="row">
             <div class="col-md-12">
                 <div class="headline">
-                    <h2><?php echo LANG_VALUE_155; ?></h2>
-                    <h3><?php echo LANG_VALUE_156; ?></h3>
+                    <h2>Related Products</h2>
+                    <h3>See all related products from below</h3>
                 </div>
             </div>
         </div>
@@ -757,7 +757,7 @@ if($success_message1 != '') {
                                     }
                                     ?>
                                 </div>
-                                <p><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo LANG_VALUE_154; ?></a></p>
+                                <p><a href="product.php?id=<?php echo $row['p_id']; ?>">Add to Cart</a></p>
                             </div>
                         </div>
                         <?php

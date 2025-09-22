@@ -30,7 +30,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                 
                 <?php if(!isset($_SESSION['customer'])): ?>
                     <p>
-                        <a href="login.php" class="btn btn-md btn-danger"><?php echo LANG_VALUE_160; ?></a>
+                        <a href="login.php" class="btn btn-md btn-danger">Please login as customer to checkout</a>
                     </p>
                 <?php else: ?>
 
@@ -45,7 +45,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                             <th>Color</th>
                             <th>Price</th>
                             <th>Quantity</th>
-                            <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
+                            <th class="text-right">Total</th>
                         </tr>
                          <?php
                         $table_total_price = 0;
@@ -134,7 +134,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                         </tr>
                         <?php endfor; ?>           
                         <tr>
-                            <th colspan="7" class="total-text"><?php echo LANG_VALUE_81; ?></th>
+                            <th colspan="7" class="total-text">Sub Total</th>
                             <th class="total-amount">Rs.<?php echo $table_total_price; ?></th>
                         </tr>
                         <?php
@@ -156,11 +156,11 @@ if(!isset($_SESSION['cart_p_id'])) {
                         }                        
                         ?>
                         <tr>
-                            <td colspan="7" class="total-text"><?php echo LANG_VALUE_84; ?></td>
+                            <td colspan="7" class="total-text">Shipping Cost</td>
                             <td class="total-amount">Rs.<?php echo $shipping_cost; ?></td>
                         </tr>
                         <tr>
-                            <th colspan="7" class="total-text"><?php echo LANG_VALUE_82; ?></th>
+                            <th colspan="7" class="total-text">Total</th>
                             <th class="total-amount">
                                 <?php
                                 $final_total = $table_total_price+$shipping_cost;
@@ -176,22 +176,22 @@ if(!isset($_SESSION['cart_p_id'])) {
                 <div class="billing-address">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3 class="special"><?php echo LANG_VALUE_161; ?></h3>
+                            <h3 class="special">Billing Address</h3>
                             <table class="table table-responsive table-bordered table-hover table-striped bill-address">
                                 <tr>
-                                    <td><?php echo LANG_VALUE_102; ?></td>
+                                    <td>Full Name</td>
                                     <td><?php echo $_SESSION['customer']['cust_b_name']; ?></p></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_103; ?></td>
+                                    <td>Company Name</td>
                                     <td><?php echo $_SESSION['customer']['cust_b_cname']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_104; ?></td>
+                                    <td>Phone Number</td>
                                     <td><?php echo $_SESSION['customer']['cust_b_phone']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_106; ?></td>
+                                    <td>Country</td>
                                     <td>
                                         <?php
                                         $statement = $pdo->prepare("SELECT * FROM tbl_country WHERE country_id=?");
@@ -204,42 +204,42 @@ if(!isset($_SESSION['cart_p_id'])) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_105; ?></td>
+                                    <td>Address</td>
                                     <td>
                                         <?php echo nl2br($_SESSION['customer']['cust_b_address']); ?>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_107; ?></td>
+                                    <td>City</td>
                                     <td><?php echo $_SESSION['customer']['cust_b_city']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_108; ?></td>
+                                    <td>State</td>
                                     <td><?php echo $_SESSION['customer']['cust_b_state']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_109; ?></td>
+                                    <td>Zip Code</td>
                                     <td><?php echo $_SESSION['customer']['cust_b_zip']; ?></td>
                                 </tr>                                
                             </table>
                         </div>
                         <div class="col-md-6">
-                            <h3 class="special"><?php echo LANG_VALUE_162; ?></h3>
+                            <h3 class="special">Shipping Address</h3>
                             <table class="table table-responsive table-bordered table-hover table-striped bill-address">
                                 <tr>
-                                    <td><?php echo LANG_VALUE_102; ?></td>
+                                    <td>Full Name</td>
                                     <td><?php echo $_SESSION['customer']['cust_s_name']; ?></p></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_103; ?></td>
+                                    <td>Company Name</td>
                                     <td><?php echo $_SESSION['customer']['cust_s_cname']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_104; ?></td>
+                                    <td>Phone Number</td>
                                     <td><?php echo $_SESSION['customer']['cust_s_phone']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_106; ?></td>
+                                    <td>Country</td>
                                     <td>
                                         <?php
                                         $statement = $pdo->prepare("SELECT * FROM tbl_country WHERE country_id=?");
@@ -252,21 +252,21 @@ if(!isset($_SESSION['cart_p_id'])) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_105; ?></td>
+                                    <td>Address</td>
                                     <td>
                                         <?php echo nl2br($_SESSION['customer']['cust_s_address']); ?>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_107; ?></td>
+                                    <td>City</td>
                                     <td><?php echo $_SESSION['customer']['cust_s_city']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_108; ?></td>
+                                    <td>State</td>
                                     <td><?php echo $_SESSION['customer']['cust_s_state']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_109; ?></td>
+                                    <td>Zip Code</td>
                                     <td><?php echo $_SESSION['customer']['cust_s_zip']; ?></td>
                                 </tr> 
                             </table>

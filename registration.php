@@ -214,27 +214,27 @@ if (isset($_POST['form1'])) {
                                 ?>
 
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_102; ?> *</label>
+                                    <label for="">Full Name *</label>
                                     <input type="text" class="form-control" name="cust_name" value="<?php if(isset($_POST['cust_name'])){echo $_POST['cust_name'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_103; ?></label>
+                                    <label for="">Company Name</label>
                                     <input type="text" class="form-control" name="cust_cname" value="<?php if(isset($_POST['cust_cname'])){echo $_POST['cust_cname'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_94; ?> *</label>
+                                    <label for="">Email Address *</label>
                                     <input type="email" class="form-control" name="cust_email" value="<?php if(isset($_POST['cust_email'])){echo $_POST['cust_email'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_104; ?> *</label>
+                                    <label for="">Phone Number *</label>
                                     <input type="text" class="form-control" name="cust_phone" value="<?php if(isset($_POST['cust_phone'])){echo $_POST['cust_phone'];} ?>">
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <label for=""><?php echo LANG_VALUE_105; ?> *</label>
+                                    <label for="">Address *</label>
                                     <textarea name="cust_address" class="form-control" cols="30" rows="10" style="height:70px;"><?php if(isset($_POST['cust_address'])){echo $_POST['cust_address'];} ?></textarea>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_106; ?> *</label>
+                                    <label for="">Country *</label>
                                     <select name="cust_country" class="form-control select2">
                                         <option value="">Select country</option>
                                     <?php
@@ -251,23 +251,23 @@ if (isset($_POST['form1'])) {
                                 </div>
                                 
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_107; ?> *</label>
+                                    <label for="">City *</label>
                                     <input type="text" class="form-control" name="cust_city" value="<?php if(isset($_POST['cust_city'])){echo $_POST['cust_city'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_108; ?> *</label>
+                                    <label for="">State *</label>
                                     <input type="text" class="form-control" name="cust_state" value="<?php if(isset($_POST['cust_state'])){echo $_POST['cust_state'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_109; ?> *</label>
+                                    <label for="">Zip Code *</label>
                                     <input type="text" class="form-control" name="cust_zip" value="<?php if(isset($_POST['cust_zip'])){echo $_POST['cust_zip'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_96; ?> *</label>
+                                    <label for="">Password *</label>
                                     <input type="password" class="form-control" name="cust_password">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_98; ?> *</label>
+                                    <label for="">Retype Password *</label>
                                     <input type="password" class="form-control" name="cust_re_password">
                                 </div>
                                 <div class="col-md-6 form-group">
