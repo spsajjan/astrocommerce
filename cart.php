@@ -81,9 +81,9 @@ if (isset($_POST['form1'])) {
                             <th>Size</th>
                             <th>Color</th>
                             <th>Price</th>
-                            <th><?php echo LANG_VALUE_55; ?></th>
-                            <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
-                            <th class="text-center" style="width: 100px;"><?php echo LANG_VALUE_83; ?></th>
+                            <th>Quantity</th>
+                            <th class="text-right">Total</th>
+                            <th class="text-center" style="width: 100px;">Action</th>
                         </tr>
                         <?php
                         $table_total_price = 0;
@@ -189,7 +189,7 @@ if (isset($_POST['form1'])) {
                 <div class="cart-buttons">
                     <ul>
                         <li><input type="submit" value="Update Cart" class="btn btn-primary" name="form1"></li>
-                        <li><a href="index.php" class="btn btn-primary"><?php echo LANG_VALUE_85; ?></a></li>
+                        <li><a href="index.php" class="btn btn-primary">Continue Shopping</a></li>
                         <li><a href="checkout.php" class="btn btn-primary">Proceed to Checkout</a></li>
                     </ul>
                 </div>

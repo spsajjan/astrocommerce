@@ -123,7 +123,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_product_category; ?>)">
     <div class="inner">
-        <h1><?php echo LANG_VALUE_50; ?> <?php echo $title; ?></h1>
+        <h1>Category: <?php echo $title; ?></h1>
     </div>
 </div>
 
@@ -135,7 +135,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
             </div>
             <div class="col-md-9">
                 
-                <h3><?php echo LANG_VALUE_51; ?> "<?php echo $title; ?>"</h3>
+                <h3>All Products Under "<?php echo $title; ?>"</h3>
                 <div class="product product-cat">
 
                     <div class="row">

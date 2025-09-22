@@ -44,7 +44,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                             <th>Size</th>
                             <th>Color</th>
                             <th>Price</th>
-                            <th><?php echo LANG_VALUE_55; ?></th>
+                            <th>Quantity</th>
                             <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
                         </tr>
                          <?php
@@ -338,7 +338,7 @@ if(!isset($_SESSION['cart_p_id'])) {
 
                                         <input type="hidden" name="final_total" value="<?php echo $final_total; ?>">
                                         <div class="col-md-12 form-group">
-                                            <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_46; ?>" name="form1">
+                                            <input type="submit" class="btn btn-primary" value="Pay Now" name="form1">
                                         </div>
                                     </form>
 
@@ -347,7 +347,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                     <form action="payment/bank/init.php" method="post" id="bank_form">
                                         <input type="hidden" name="amount" value="<?php echo $final_total; ?>">
                                         <div class="col-md-12 form-group">
-                                            <label for=""><?php echo LANG_VALUE_43; ?></span></label><br>
+                                            <label for="">Send to this Details</span></label><br>
                                             <?php
                                             $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
                                             $statement->execute();
@@ -358,11 +358,11 @@ if(!isset($_SESSION['cart_p_id'])) {
                                             ?>
                                         </div>
                                         <div class="col-md-12 form-group">
-                                            <label for=""><?php echo LANG_VALUE_44; ?> <br><span style="font-size:12px;font-weight:normal;">(<?php echo LANG_VALUE_45; ?>)</span></label>
+                                            <label for="">Transaction Information <br><span style="font-size:12px;font-weight:normal;">(Include transaction id and other information correctly)</span></label>
                                             <textarea name="transaction_info" class="form-control" cols="30" rows="10"></textarea>
                                         </div>
                                         <div class="col-md-12 form-group">
-                                            <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_46; ?>" name="form3">
+                                            <input type="submit" class="btn btn-primary" value="Pay Now" name="form3">
                                         </div>
                                     </form>
 	                                

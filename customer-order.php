@@ -31,7 +31,7 @@ if(!isset($_SESSION['customer'])) {
                             <thead>
                                 <tr>
                                     <th><?php echo '#' ?></th>
-                                    <th><?php echo LANG_VALUE_48; ?></th>
+                                    <th>Product Details</th>
                                     <th>Payment Date & Time</th>
                                     <th>Transaction ID</th>
                                     <th>Paid Amount</th>

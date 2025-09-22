@@ -414,7 +414,7 @@ if($success_message1 != '') {
                                 <div class="row">
                                     <?php if(isset($size)): ?>
                                     <div class="col-md-12 mb_20">
-                                        <?php echo LANG_VALUE_52; ?> <br>
+                                        Select Size <br>
                                         <select name="size_id" class="form-control select2" style="width:auto;">
                                             <?php
                                             $statement = $pdo->prepare("SELECT * FROM tbl_size");
@@ -434,7 +434,7 @@ if($success_message1 != '') {
 
                                     <?php if(isset($color)): ?>
                                     <div class="col-md-12">
-                                        <?php echo LANG_VALUE_53; ?> <br>
+                                        Select Color <br>
                                         <select name="color_id" class="form-control select2" style="width:auto;">
                                             <?php
                                             $statement = $pdo->prepare("SELECT * FROM tbl_color");
@@ -456,7 +456,7 @@ if($success_message1 != '') {
                                 
                             </div>
 							<div class="p-price">
-                                <span style="font-size:14px;"><?php echo LANG_VALUE_54; ?></span><br>
+                                <span style="font-size:14px;">Product Price</span><br>
                                 <span>
                                     <?php if($p_old_price!=''): ?>
                                         <del>Rs.<?php echo $p_old_price; ?></del>
@@ -468,7 +468,7 @@ if($success_message1 != '') {
                             <input type="hidden" name="p_name" value="<?php echo $p_name; ?>">
                             <input type="hidden" name="p_featured_photo" value="<?php echo $p_featured_photo; ?>">
 							<div class="p-quantity">
-                                <?php echo LANG_VALUE_55; ?> <br>
+                                Quantity <br>
 								<input type="number" class="input-text qty" step="1" min="1" max="" name="p_qty" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric">
 							</div>
 							<div class="btn-cart btn-cart1">
@@ -476,7 +476,7 @@ if($success_message1 != '') {
 							</div>
                             </form>
 							<div class="share">
-                                <?php echo LANG_VALUE_58; ?> <br>
+                                Share this Product <br>
 								<div class="sharethis-inline-share-buttons"></div>
 							</div>
 						</div>
@@ -486,11 +486,11 @@ if($success_message1 != '') {
 						<div class="col-md-12">
 							<!-- Nav tabs -->
 							<ul class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab"><?php echo LANG_VALUE_59; ?></a></li>
-								<li role="presentation"><a href="#feature" aria-controls="feature" role="tab" data-toggle="tab"><?php echo LANG_VALUE_60; ?></a></li>
-                                <li role="presentation"><a href="#condition" aria-controls="condition" role="tab" data-toggle="tab"><?php echo LANG_VALUE_61; ?></a></li>
-                                <li role="presentation"><a href="#return_policy" aria-controls="return_policy" role="tab" data-toggle="tab"><?php echo LANG_VALUE_62; ?></a></li>
-                               <!-- <li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab"><?php echo LANG_VALUE_63; ?></a></li> -->
+								<li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Product Description</a></li>
+								<li role="presentation"><a href="#feature" aria-controls="feature" role="tab" data-toggle="tab">Features</a></li>
+                                <li role="presentation"><a href="#condition" aria-controls="condition" role="tab" data-toggle="tab">Conditions</a></li>
+                                <li role="presentation"><a href="#return_policy" aria-controls="return_policy" role="tab" data-toggle="tab">Return Policy</a></li>
+                               <!-- <li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab">Reviews</a></li> -->
 							</ul>
 
 							<!-- Tab panes -->
@@ -551,7 +551,7 @@ if($success_message1 != '') {
                                         $statement->execute(array($_REQUEST['id']));
                                         $total = $statement->rowCount();
                                         ?>
-                                        <h2><?php echo LANG_VALUE_63; ?> (<?php echo $total; ?>)</h2>
+                                        <h2>Reviews (<?php echo $total; ?>)</h2>
                                         <?php
                                         if($total) {
                                             $j=0;
@@ -559,10 +559,10 @@ if($success_message1 != '') {
                                             foreach ($result as $row) {
                                                 $j++;
                                                 ?>
-                                                <div class="mb_10"><b><u><?php echo LANG_VALUE_64; ?> <?php echo $j; ?></u></b></div>
+                                                <div class="mb_10"><b><u>Review <?php echo $j; ?></u></b></div>
                                                 <table class="table table-bordered">
                                                     <tr>
-                                                        <th style="width:170px;"><?php echo LANG_VALUE_75; ?></th>
+                                                        <th style="width:170px;">Customer Name</th>
                                                         <td><?php echo $row['cust_name']; ?></td>
                                                     </tr>
                                                     <tr>
@@ -595,7 +595,7 @@ if($success_message1 != '') {
                                         }
                                         ?>
                                         
-                                        <h2><?php echo LANG_VALUE_65; ?></h2>
+                                        <h2>Give a Review</h2>
                                         <?php
                                         if($error_message != '') {
                                             echo "<script>alert('".$error_message."')</script>";
@@ -625,16 +625,16 @@ if($success_message1 != '') {
                                             <div class="form-group">
                                                 <textarea name="comment" class="form-control" cols="30" rows="10" placeholder="Write your comment (optional)" style="height:100px;"></textarea>
                                             </div>
-                                            <input type="submit" class="btn btn-default" name="form_review" value="<?php echo LANG_VALUE_67; ?>">
+                                            <input type="submit" class="btn btn-default" name="form_review" value="Submit Review">
                                             </form>
                                             <?php else: ?>
-                                                <span style="color:red;"><?php echo LANG_VALUE_68; ?></span>
+                                                <span style="color:red;">You have already given a rating!</span>
                                             <?php endif; ?>
 
 
                                         <?php else: ?>
                                             <p class="error">
-												<?php echo LANG_VALUE_69; ?> <br>
+												You must have to login to give a review <br>
 												<a href="login.php" style="color:red;text-decoration: underline;">Login</a>
 											</p>
                                         <?php endif; ?>                         
