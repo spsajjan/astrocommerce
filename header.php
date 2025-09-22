@@ -14,16 +14,6 @@ $success_message = '';
 $error_message1 = '';
 $success_message1 = '';
 
-// Getting all language variables into array as global variable
-$i=1;
-$statement = $pdo->prepare("SELECT * FROM tbl_language");
-$statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
-foreach ($result as $row) {
-	define('LANG_VALUE_'.$i,$row['lang_value']);
-	$i++;
-}
-
 $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
